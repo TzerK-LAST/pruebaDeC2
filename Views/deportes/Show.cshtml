@@ -1,0 +1,70 @@
+@model GESTIONES.Models.deporte
+
+@{
+    ViewData["Title"] = "Detalle de Zona";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Header -->
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1 class="h3 fw-semibold mb-0">Detalle de <span class="text-primary">Zona</span></h1>
+    <a asp-action="Index" asp-controller="deportes" class="btn btn-outline-secondary">
+        <i class="bi bi-arrow-left me-1"></i> Volver
+    </a>
+</div>
+
+<!-- Card detalle -->
+<div class="card shadow-sm" style="max-width: 640px;">
+    <div class="card-body p-4">
+
+        <table class="table table-borderless mb-0">
+            <tbody>
+                <tr>
+                    <td class="text-muted fw-medium" style="width:180px;">ID</td>
+                    <td><strong>#@Model.Id</strong></td>
+                </tr>
+                <tr>
+                    <td class="text-muted fw-medium">Tipo de espacio</td>
+                    <td>@Model.tipo_espacio</td>
+                </tr>
+                <tr>
+                    <td class="text-muted fw-medium">Descripción</td>
+                    <td>@Model.Description</td>
+                </tr>
+                <tr>
+                    <td class="text-muted fw-medium">Autor</td>
+                    <td>@Model.Author</td>
+                </tr>
+                <tr>
+                    <td class="text-muted fw-medium">Género</td>
+                    <td><span class="badge bg-secondary">@Model.genero</span></td>
+                </tr>
+                <tr>
+                    <td class="text-muted fw-medium">Cantidad</td>
+                    <td>@Model.Quantity</td>
+                </tr>
+                <tr>
+                    <td class="text-muted fw-medium">Stock</td>
+                    <td>
+                        @if (Model.Stock > 5)
+                        {
+                            <span class="badge bg-success">@Model.Stock disponibles</span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-danger">@Model.Stock disponibles</span>
+                        }
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="d-flex gap-2 mt-4 pt-3 border-top">
+            <a asp-action="Edit" asp-controller="deportes" asp-route-id="@Model.Id" class="btn btn-primary">
+                <i class="bi bi-pencil me-1"></i> Editar
+            </a>
+            <a asp-action="Index" asp-controller="deportes" class="btn btn-outline-secondary">Cancelar</a>
+        </div>
+
+    </div>
+</div>
